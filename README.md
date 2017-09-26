@@ -39,38 +39,38 @@ Security Design
 ---------------
 Communication flow:
 
-***Server Side******************								***Client Side**************
-Generate keypair 												Generate a keypair 
+***Server Side******************				***Client Side**************
+Generate keypair 						Generate a keypair 
 and server certificate											
 ==============================	Start Program			==============================
 
-									User public key (file)
-								<<<----------------------- 
-									(Offline)
+				User public key (file)
+				<<<----------------------- 
+				(Offline)
 									  
-									1. signed-certificate
-									2. server certificate
-certificate (User public key)	----------------------->>>		import server certificate
-									(offline)
+				1. signed-certificate
+				2. server certificate
+certificate (User public key)	----------------------->>>	import server certificate
+				(offline)
 									  
 ============================== 	Complete Preparation		==============================
-Wait for client													Create a SSL connection 
-																using server certificate
+Wait for client							Create a SSL connection 
+								using server certificate
 ============================== 	SSL Connection Established	==============================
 
-									signed-certificate
-								<<<-----------------------
-									(network)
+				signed-certificate
+				<<<-----------------------
+				(network)
 									
-								   E(public key, Random Number)
-Verify certificate				----------------------->>>		Decrypt with user's public key
-									(network)
+				E(public key, Random Number)
+Verify certificate		----------------------->>>	Decrypt with user's public key
+				(network)
 									
-									decrypted random number
-Verify decrypted number			<<<-----------------------     
-								    (network)
+					decrypted random number
+Verify decrypted number		<<<-----------------------     
+					(network)
 ==============================	Authentication Complete		==============================
-==============================	Start Communication			==============================
+==============================	Start Communication		==============================
 							
 System-specific Notes
 ---------------------
